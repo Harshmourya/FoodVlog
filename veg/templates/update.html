@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block start %}
+<h1>Welcome to receipes page</h1>
+
+<!-- use method=post to send data from frontend to backend ans also use enctype="multipart/form-data" method if you are sharing any file from frontend -->
+<form class="conainer mt-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- csrf_token is used to check the request is send from same server not different server -->
+    <div class=" col-6 mx-auto card p-4 shadow-lg">
+        <h2>Add Receipes </h2>
+        <div class="form-group mb-4 ">
+            <label for="exampleInputEmail1">Receipes</label>
+            <input type="text" name="receipes_name" required="true" value="{{recipe.receipes_name}}" class="form-control" placeholder="Enter Receipes">
+        </div>
+        <div class="form-group mb-3">
+            <label for="exampleInputPassword1">Description</label>
+            <textarea class="form-control"  required name="decription">{{recipe.decription}}</textarea>
+        </div>
+        <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Images</label>
+            <input type="file" name="image" class="form-control" placeholder="Enter Receipes">
+        </div>
+
+        <button type="submit" class="btn btn-danger">Submit</button>
+    </div>
+</form>
+{% endblock%}

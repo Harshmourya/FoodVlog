@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block start %}
+<h1>Welcome to Home page</h1>
+    <!-- {{peoples}} -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for people in peoples%}
+            <!-- {{people}} -->
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{people.first_name}}</td>
+                <td>{{people.last_name}}</td>
+                <td>{{people.email}}</td>
+                <td>{{people.gender}}</td>
+            </tr>          
+            {%endfor%}
+        </tbody>
+    </table>
+    <!-- truncatechars it slice text upto given value -->
+    <p>{{text|truncatechars:80}}</p>
+{% endblock %}

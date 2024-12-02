@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block start %}
+
+<!-- use method=post to send data from frontend to backend ans also use enctype="multipart/form-data" method if you are sharing any file from frontend -->
+<form class="conainer mt-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if messages %}
+    {{message.tag}}
+    <div class="alert alert-primary" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    <div class=" col-4 mx-auto card p-4 shadow-lg">
+        <h2 class="mx-auto">Registor</h2>
+        <div class="form-group mb-4 ">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" name="first_name" required="true" class="form-control" placeholder="First Name">
+        </div>
+        <div class="form-group mb-4 ">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="text" name="last_name" required="true" class="form-control" placeholder="Last Name">
+        </div>
+        <div class="form-group mb-4 ">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" name="username" required="true" class="form-control" placeholder="Username">
+        </div>
+        <div class="form-group mb-3">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" required="true" class="form-control" placeholder="Password">
+        </div>
+        <p>already have account <a href="/login/">click</a></p>
+        <button type="submit" class="btn btn-danger">Registor</button>
+    </div>
+</form>
+{% endblock%}
